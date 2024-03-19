@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Chef Mike's Sportsbook</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+        <script type="module" src="/bundle.js"></script>
+        <style>
+            .login {
+                background-color: black;
+                width: 75%;
+            }
+            .centerpage {
+                position: absolute;
+                background-color: rgb(207 226 243);
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                display: flex;
+                align-content: center;
+                align-items: center;
+            }
+            .dropshadow {
+                background-color: rgb(207 226 243);
+            }
+            #statswrapper {
+                height: 60%;
+                width: 40%;
+                border: 2px solid white;
+                border-radius: 15px;
+                display: flex;
+                justify-content: space-evenly;
+                align-content: center;
+            }
+            #stats {
+                font-size: large;
+                align-self: center;
+            }
+            label {
+                color: black;  
+            }
+            #date {
+                font-weight: 300;
+            }
+            .arrow {
+                width: 20%;
+                background-color: transparent;
+                border-color: transparent;
+                color:black !important;
+            }
+            .arrow:hover {
+                background-color: rgb(207 226 243);
+                border-color: rgb(207 226 243);
+            }
+            .submitbutton {
+                width: 40%;
+                font-size: large;
+            }
+            .icon {
+              background:none;
+              border:none;
+              margin:0;
+              padding:0;
+              cursor: pointer;
+            }
+            .nohover:hover, .nohover:focus, .nohover:active, .nohover.active, .open>.dropdown-toggle.nohover, .nohover:active:focus {
+              background-color: inherit;
+            }
+            .fade-scale {
+              top: 100%;
+              opacity: 0;
+              -webkit-transition: all .12s linear;
+              -o-transition: all .12s linear;
+              transition: all .12s linear;
+            }
+
+            .fade-scale.show {
+              opacity: 1;
+              top: 0;
+            }
+
+            .locked {
+              background-color: rgb(173, 173, 173);
+              border: rgb(173, 173, 173) 1px;
+            }
+            .locked:focus {
+              background-color: rgb(173, 173, 173);
+              border: rgb(173, 173, 173) 1px;
+              outline: none I !important;
+              box-shadow: none;
+              -moz-box-shadow: none;
+              -webkit-box-shadow: none;
+            }
+        </style>
+    </head>
+    <body>
+      <div id="login">
+        <div class="centerpage">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-md-5 h2 text-center mb-5">
+                  Will you be the ultimate sandwich predictor?
+                  Prove your skills. Attain everlasting glory.
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-md-4">
+                  <form>
+                  <div class="group form-outline mt-4 mb-4">
+                      <input id="txtEmail" type="email" class="form-control" placeholder="Columbia/Barnard Email">
+                  </div>
+
+                  <div class="group form-outline mt-4 mb-4">
+                      <input id="txtPassword" type="password" class="form-control" placeholder="Password">
+                  </div>
+                  <div id="divLoginError" class="group">
+                      <div id="lblLoginErrorMessage" class="errorlabel">Error message</div>
+                  </div>
+
+                  <div class="text-center m-4 mt-5">
+                  <button id="btnLogin" type="button" class="btn btn-secondary btn-md login">Log in</button>
+                  </div>
+
+                  <div class="text-center m-4">
+                  <button id="btnSignup" type="button" class="btn btn-secondary btn-md login">Sign up</button>
+                  </div>
+                
+                  </form>
+              </div>
+            </div>
+          </div>
+          </div>
+      </div>
+    
+      <div id="app">
+        <div class="container-fluid">
+          <div class="row justify-content-between dropshadow">
+              <div class="col-md-4 h3 d-flex justify-content-start align-self-center">
+                  <div id="statswrapper" class="text-white">
+                      <span id="stats">14 | 145th</span>
+                      <span>
+                      <button type="button" class="btn btn-secondary icon nohover" data-bs-toggle="modal" data-bs-target="#statsModal">
+                        <i class="bi bi-bar-chart h3"></i>
+                      </button>
+                      </span>
+                  </div>
+              </div>
+              <div class="col-sm-2 col-md-1 h6 pb-2 pt-2">
+                  <img src="mikelogo.png" alt="Logo" class="img-fluid">
+              </div>
+              <div class="col-md-4 h3 text-end align-self-center">
+                <button type="button" class="btn btn-secondary icon nohover" data-bs-toggle="modal" data-bs-target="#helpModal">
+                  <i class="bi bi-question-circle h3"></i>
+                </button>
+
+                <button type="button" class="btn btn-secondary icon nohover" data-bs-toggle="modal" data-bs-target="#settingsModal">
+                  <i class="bi bi-gear p-2 h3"></i>
+                </button>
+                  
+                  <button class="btn btn-secondary dropdown-toggle icon nohover" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bi bi-person-circle h3"></i>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div id="lblAuthState" class="authlabel dropdown-item nohover"></div>
+                    <button id="btnLogout" type="button" class="button buttonBlue dropdown-item">Log out</button>
+                    <a class="dropdown-item text-danger" href="#">Delete account</a>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-md-6 h4 text-center p-4 text-secondary" id="date">March 14, 2024</div>
+          </div>
+          <div class="row justify-content-center">
+              <div class="col-md-5">
+                  <form>
+                      <div class="form-group p-4">
+                          <label for="hotspecial" class="h4">Hot Special</label>
+                          <input class="form-control" list="hspecs" name="hspec" id="hspec">
+                          <datalist id="hspecs">
+                            <option value="Edge">
+                            <option value="Firefox">
+                            <option value="Chrome">
+                            <option value="Opera">
+                            <option value="Safari">
+                          </datalist>
+                      </div>
+                      <div class="form-group p-4">
+                          <label for="coldspecial" class="h4">Cold Special</label>
+                          <input class="form-control" list="cspecs" name="cspec" id="cspec">
+                          <datalist id="cspecs">
+                            <option value="Edge">
+                            <option value="Firefox">
+                            <option value="Chrome">
+                            <option value="Opera">
+                            <option value="Safari">
+                          </datalist>
+                      </div>
+                      <div class="form-group p-4">
+                          <label for="hotvegan" class="h4">Hot Vegan</label>
+                          <input class="form-control" list="hvegs" name="hveg" id="hveg">
+                          <datalist id="hvegs">
+                            <option value="Edge">
+                            <option value="Firefox">
+                            <option value="Chrome">
+                            <option value="Opera">
+                            <option value="Safari">
+                          </datalist>
+                      </div>
+                      <div class="form-group p-4">
+                          <label for="coldvegan" class="h4">Cold Vegan</label>
+                          <input class="form-control" list="cvegs" name="cveg" id="cveg">
+                          <datalist id="cvegs">
+                            <option value="Edge">
+                            <option value="Firefox">
+                            <option value="Chrome">
+                            <option value="Opera">
+                            <option value="Safari">
+                          </datalist>                            
+                      </div>
+                      <div class="row justify-content-around mt-4">
+                          <button class="btn btn-primary btn-md arrow" id="leftarrow"><i class="bi bi-caret-left h2"></i></button>
+                          <button type="submit" class="btn btn-dark btn-md submitbutton" id="submitguess">Submit</button>
+                          <button class="btn btn-primary btn-md arrow" id="rightarrow"><i class="bi bi-caret-right h2"></i></button>
+                      </div>
+                    </form>
+              </div>
+          </div>
+
+      <div class="modal fade" id="helpModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="settingsModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade-scale" id="statsModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-fullscreen" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
+</html>

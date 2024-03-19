@@ -1,0 +1,36 @@
+        <div class="centerpage">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-5 h2 text-center mb-5">
+                Will you be the ultimate sandwich predictor?
+                Prove your skills. Attain everlasting glory
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-4">
+            <form id="loginform" onkeydown="return validate(event);">
+            <div class="form-outline mt-4 mb-4">
+              <input type="email" name="email" class="form-control" placeholder="Email"/>
+            </div>
+          
+            <div class="form-outline mb-4">
+              <input type="password" name="password" class="form-control" placeholder="Password"/>
+            </div>
+            
+            <div class="text-center m-4">
+                <a href="#!">Forgot password?</a>
+            </div>
+            
+            <div class="text-center m-4">
+            <button type="submit" formmethod=post class="btn btn-secondary btn-md login" id="loginbutton">Log in</button>
+            </div>
+
+            <div class="text-center">
+              <p>Embarking on your journey? <a href="#!">Sign up</a></p>
+            </div>
+            </form>
+            </div>
+          </div>
+        </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
